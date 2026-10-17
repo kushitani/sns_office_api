@@ -1,0 +1,45 @@
+# 概要: DB起動→Migration成功→API起動の順序を保証する開発環境です。Seedは自動実行しません。
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: sns_office
+      POSTGRES_USER: sns_office
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sns_office}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sns_office -d sns_office"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  migrate:
+    build: .
+    environment: &api_env
+      APP_ENV: ${APP_ENV:-development}
+      DATABASE_URL: postgresql+psycopg://sns_office:${POSTGRES_PASSWORD:-sns_office}@db:5432/sns_office
+      JWT_SECRET: ${JWT_SECRET:?Copy .env.example to .env and set JWT_SECRET}
+      CORS_ORIGINS: ${CORS_ORIGINS:-["http://localhost:5173"]}
+      DEMO_EMAIL: ${DEMO_EMAIL:-demo@example.com}
+      DEMO_PASSWORD: ${DEMO_PASSWORD:-DemoPassword123!}
+    command: ["/app/.venv/bin/alembic", "upgrade", "head"]
+    depends_on:
+      db:
+        condition: service_healthy
+  api:
+    build: .
+    environment: *api_env
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "/app/.venv/bin/python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+volumes:
+  postgres_data:

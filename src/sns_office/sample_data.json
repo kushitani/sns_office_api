@@ -1,0 +1,209 @@
+{
+  "agents": [
+    {
+      "id": "alex",
+      "name": "Alex",
+      "role": "Manager",
+      "color": "#daab4f",
+      "status": "THINKING",
+      "task": "来週のSNS戦略を考えています",
+      "progress": 2,
+      "total": 3,
+      "completed": 28,
+      "history": [
+        "10/03 09:30 今週の投稿計画を整理",
+        "10/02 16:00 キャンペーン企画を完了"
+      ]
+    },
+    {
+      "id": "mika",
+      "name": "Mika",
+      "role": "Writer",
+      "color": "#ce7c6a",
+      "status": "IDLE",
+      "task": "新しい投稿のご依頼を待っています",
+      "progress": 0,
+      "total": 1,
+      "completed": 42,
+      "history": [
+        "10/03 10:15 Instagram投稿を3件作成",
+        "10/02 15:40 キャプションをリライト"
+      ]
+    },
+    {
+      "id": "ken",
+      "name": "Ken",
+      "role": "Analyst",
+      "color": "#639bbc",
+      "status": "ANALYZING",
+      "task": "先週のデータを分析しています",
+      "progress": 2,
+      "total": 3,
+      "completed": 16,
+      "history": [
+        "10/03 10:00 週次レポートを作成",
+        "10/02 14:20 投稿時間帯の比較を完了"
+      ]
+    },
+    {
+      "id": "sora",
+      "name": "Sora",
+      "role": "Operator",
+      "color": "#79a58b",
+      "status": "POSTING",
+      "task": "18:00の投稿を準備しています",
+      "progress": 1,
+      "total": 2,
+      "completed": 64,
+      "history": [
+        "10/03 09:00 Xへの投稿が完了",
+        "10/02 18:00 予約投稿の確認を完了"
+      ]
+    },
+    {
+      "id": "rin",
+      "name": "Rin",
+      "role": "Designer",
+      "color": "#9f86bd",
+      "status": "WRITING",
+      "task": "Instagram画像の案を作成しています",
+      "progress": 2,
+      "total": 3,
+      "completed": 31,
+      "history": [
+        "10/03 10:30 秋のクリエイティブを制作",
+        "10/02 17:00 サムネイル案を作成"
+      ]
+    }
+  ],
+  "notifications": [
+    {
+      "id": "n1",
+      "title": "Mikaから投稿案が届きました",
+      "detail": "Instagramの投稿が承認待ちです。",
+      "type": "REVIEW",
+      "read": false,
+      "link": "/posts/post-1"
+    },
+    {
+      "id": "n2",
+      "title": "週次分析レポートが完成しました",
+      "detail": "Kenが今週の成果と改善案をまとめました。",
+      "type": "ANALYSIS",
+      "read": false,
+      "link": "/analytics/report"
+    },
+    {
+      "id": "n3",
+      "title": "投稿が通常の5倍の速度で拡散中",
+      "detail": "「チームの朝」の反応が増えています。",
+      "type": "TREND",
+      "read": false,
+      "link": "/monitoring"
+    },
+    {
+      "id": "n4",
+      "title": "Xへの投稿に失敗しました",
+      "detail": "Mockの接続エラー。内容を確認してください。",
+      "type": "ERROR",
+      "read": false,
+      "link": "/posts/post-7"
+    },
+    {
+      "id": "n5",
+      "title": "Instagramへの投稿が完了しました",
+      "detail": "「チームの朝」を公開しました。",
+      "type": "SUCCESS",
+      "read": true,
+      "link": "/posts/post-3"
+    },
+    {
+      "id": "n6",
+      "title": "Weekly Reportを確認できます",
+      "detail": "次週のプランを会議で確認しましょう。",
+      "type": "REPORT",
+      "read": true,
+      "link": "/meeting"
+    }
+  ],
+  "posts": [
+    [
+      "エンジニアあるある。集中したい日に限って…",
+      "Instagram",
+      "REVIEW",
+      "2026-10-03T18:00",
+      "—"
+    ],
+    [
+      "小さな工夫で、仕事はもっと心地よく。",
+      "X",
+      "SCHEDULED",
+      "2026-10-04T12:00",
+      "—"
+    ],
+    [
+      "チームの朝を、ちょっと覗いてみませんか？",
+      "Instagram",
+      "POSTED",
+      "2026-10-02T18:00",
+      "8.4%"
+    ],
+    [
+      "今週のおすすめツール 3選",
+      "Threads",
+      "DRAFT",
+      "",
+      "—"
+    ],
+    [
+      "デスクの上の小さな相棒",
+      "TikTok",
+      "IDEA",
+      "",
+      "—"
+    ],
+    [
+      "秋のワークスペースツアー",
+      "YouTube",
+      "APPROVED",
+      "",
+      "—"
+    ],
+    [
+      "金曜日の振り返り",
+      "X",
+      "FAILED",
+      "2026-10-02T20:00",
+      "—"
+    ],
+    [
+      "お気に入りの仕事道具を教えてください",
+      "Instagram",
+      "SCHEDULED",
+      "2026-10-07T18:00",
+      "—"
+    ]
+  ],
+  "meeting": [
+    {
+      "agent": "alex",
+      "text": "今週の結果を確認します。Ken、分析をお願いします。"
+    },
+    {
+      "agent": "ken",
+      "text": "あるある系投稿のEngagementが8.8%と好調でした。18時台の投稿に反応が集まっています。"
+    },
+    {
+      "agent": "mika",
+      "text": "来週は日常の共感をテーマに、あるある投稿を3件作成することを提案します。"
+    },
+    {
+      "agent": "sora",
+      "text": "月・水・金の18:00に配信枠を用意できます。承認後に予約しましょう。"
+    },
+    {
+      "agent": "alex",
+      "text": "では来週の計画案に追加します。社長、内容をご確認ください。"
+    }
+  ]
+}
